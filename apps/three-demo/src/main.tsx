@@ -2,7 +2,7 @@ import { Global } from '@emotion/react';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { TextDemo } from './app/TextDemo';
+import { LightBasic } from './app/LightBasic';
 
 import { globalCss } from './styles/global.css';
 
@@ -16,7 +16,8 @@ root.render(
       <Global styles={globalCss} />
       {/* <TextureBasic /> */}
       {/* <TextureDemo /> */}
-      <TextDemo />
+      {/* <TextDemo /> */}
+      <LightBasic />
     </BrowserRouter>
   </StrictMode>
 );

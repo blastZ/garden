@@ -10,7 +10,7 @@ interface Options {
 class Renderer {
   private initialized = false;
   private scene: T.Scene;
-  private camera: T.PerspectiveCamera;
+  public camera: T.PerspectiveCamera;
   private renderer: T.WebGLRenderer;
   private mountRef: MutableRefObject<HTMLDivElement>;
   private options: Options = {};
