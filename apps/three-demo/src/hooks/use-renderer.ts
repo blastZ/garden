@@ -5,13 +5,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 interface Options {
   axesHelper?: number;
   orbitControls?: boolean;
+  shadowMap?: boolean;
 }
 
 class Renderer {
   private initialized = false;
   private scene: T.Scene;
   public camera: T.PerspectiveCamera;
-  private renderer: T.WebGLRenderer;
+  public renderer: T.WebGLRenderer;
   private mountRef: MutableRefObject<HTMLDivElement>;
   private options: Options = {};
   private controls: OrbitControls;
@@ -77,6 +78,10 @@ class Renderer {
 
   private initRenderer() {
     this.renderer = new T.WebGLRenderer();
+
+    if (this.options.shadowMap) {
+      this.renderer.shadowMap.enabled = true;
+    }
 
     this.initRendererState();
   }

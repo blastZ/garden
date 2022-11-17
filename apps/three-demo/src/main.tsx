@@ -18,6 +18,7 @@ root.render(
       {/* <TextureDemo /> */}
       {/* <TextDemo /> */}
       <LightBasic />
+      {/* <ShadowBasic /> */}
     </BrowserRouter>
   </StrictMode>
 );
