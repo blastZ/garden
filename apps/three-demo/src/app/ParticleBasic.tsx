@@ -69,7 +69,7 @@ export function ParticleBasic() {
 
     const clock = new T.Clock();
     const tick = () => {
-      particles.position.y = clock.getElapsedTime() * 0.05;
+      particles.rotation.y = clock.getElapsedTime() * 0.05;
 
       requestAnimationFrame(tick);
     };

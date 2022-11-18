@@ -17,6 +17,7 @@ class Renderer {
   private options: Options = {};
   private controls: OrbitControls;
   private resizeListener: () => void;
+  private objects: T.Object3D<T.Event>[] = [];
 
   init(mountRef: RefObject<HTMLDivElement>, opts: Options = {}) {
     if (this.initialized || !mountRef.current) {
@@ -40,6 +41,24 @@ class Renderer {
   }
 
   unmount() {
+    this.renderer.dispose();
+
+    for (let i = 0; i < this.objects.length; i++) {
+      const object = this.objects[i] as any;
+
+      if (object.material) {
+        object.material.dispose();
+      }
+
+      if (object.geometry) {
+        object.geometry.dispose();
+      }
+
+      this.scene.remove(object);
+    }
+
+    this.objects = [];
+
     this.mountRef.current?.removeChild(this.mountRef.current.children[0]);
     this.initialized = false;
 
@@ -47,6 +66,7 @@ class Renderer {
   }
 
   addToScene(...objects: T.Object3D<T.Event>[]) {
+    this.objects.push(...objects);
     this.scene.add(...objects);
   }
 
