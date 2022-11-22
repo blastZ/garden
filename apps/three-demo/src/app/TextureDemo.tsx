@@ -1,20 +1,9 @@
-import styled from '@emotion/styled';
 import GUI from 'lil-gui';
 import { useEffect, useRef } from 'react';
 import * as T from 'three';
+import { Container } from '../components/Container';
+import { MountContainer } from '../components/MountContainer';
 import { useRenderer } from '../hooks/use-renderer';
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-const MountContainer = styled.div`
-  width: 100%;
-  height: 600px;
-`;
 
 export function TextureDemo() {
   const mountRef = useRef<HTMLDivElement>(null);

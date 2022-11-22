@@ -3,6 +3,7 @@ import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { LightBasic } from './app/LightBasic';
+import { ModelBasic } from './app/ModelBasic';
 import { ParticleBasic } from './app/ParticleBasic';
 import { RaycasterBasic } from './app/RaycasterBasic';
 import { ShadowBasic } from './app/ShadowBasic';
@@ -24,6 +25,7 @@ const examples = {
   '/shadow-basic': <ShadowBasic />,
   '/particle-basic': <ParticleBasic />,
   '/raycaster-basic': <RaycasterBasic />,
+  '/model-basic': <ModelBasic />,
 };
 
 root.render(
