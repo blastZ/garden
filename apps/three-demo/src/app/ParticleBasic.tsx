@@ -68,10 +68,11 @@ export function ParticleBasic() {
     const box = new T.Mesh(boxGeometry, boxMaterial);
 
     const clock = new T.Clock();
+    let reqId: number;
     const tick = () => {
       particles.rotation.y = clock.getElapsedTime() * 0.05;
 
-      requestAnimationFrame(tick);
+      reqId = requestAnimationFrame(tick);
     };
     tick();
 
@@ -80,6 +81,7 @@ export function ParticleBasic() {
     return () => {
       renderer.unmount();
       gui.destroy();
+      cancelAnimationFrame(reqId);
     };
   }, []);
 

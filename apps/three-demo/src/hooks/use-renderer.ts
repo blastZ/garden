@@ -10,7 +10,7 @@ interface Options {
 
 class Renderer {
   private initialized = false;
-  private scene: T.Scene;
+  public scene: T.Scene;
   public camera: T.PerspectiveCamera;
   public renderer: T.WebGLRenderer;
   private mountRef: MutableRefObject<HTMLDivElement>;
@@ -18,6 +18,7 @@ class Renderer {
   private controls: OrbitControls;
   private resizeListener: () => void;
   private objects: T.Object3D<T.Event>[] = [];
+  private reqId: number;
 
   init(mountRef: RefObject<HTMLDivElement>, opts: Options = {}) {
     if (this.initialized || !mountRef.current) {
@@ -63,6 +64,8 @@ class Renderer {
     this.initialized = false;
 
     window.removeEventListener('resize', this.resizeListener);
+
+    cancelAnimationFrame(this.reqId);
   }
 
   addToScene(...objects: T.Object3D<T.Event>[]) {
@@ -139,7 +142,7 @@ class Renderer {
   }
 
   private render() {
-    requestAnimationFrame(() => this.render());
+    this.reqId = requestAnimationFrame(() => this.render());
 
     this.controls.update();
 
